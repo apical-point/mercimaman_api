@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:7.4-apache
 
 # iniファイルの読込
 COPY ./docker/app/php.ini /usr/local/etc/php/
@@ -17,7 +17,7 @@ RUN apt-get update \
     vim \
     zip \
     unzip \
-    libzip-dev \
+    libzip-dev \docker \ 
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libonig-dev \
@@ -56,7 +56,7 @@ RUN npm install npm@9.5.1 -g cross-env \
     && npm install -g vite
 
 # Xdebugインストール
-RUN pecl install xdebug-3.2.2 \
+RUN pecl install xdebug-3.1.6 \
     && docker-php-ext-enable xdebug
 RUN chmod 777 /var/log/xdebug.log
 

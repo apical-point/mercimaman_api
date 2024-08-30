@@ -1,0 +1,60 @@
+<?php namespace App\Services;
+
+// ulid
+// use \Ulid;
+use Illuminate\Support\Facades\File;
+
+// サービス
+use App\Services\UserService;
+use App\Services\OrderService;
+use App\Library\Stripe;
+
+//モデル
+use App\Repositories\Eloquent\Models\Order;
+
+class ChargeService extends Bases\BaseService {
+
+    public function __construct(
+        OrderService $orderService,
+        UserService $userService
+    ) {
+        // サービス
+        $this->orderService = $orderService;
+        $this->userService = $userService;
+    }
+
+    // 決済
+    public function chargeOrder($orderId, $userId, $orderInfo) {
+        // 再取得
+        $userRow = $this->userService->getItemById($userId);
+
+        // 欲しいデータのみここで呼び出すと入れ子にしてくれる。(遅延読み込み) loadMissing()はすでに読み込んでいるものは読み込まない
+        $userRow->loadMissing(['userDetail']);
+
+        // リスト取得
+        if(!$orderRow = $this->orderService->getItem(['id' => $orderId, 'buyer_user_id' => $userId])) return false;
+
+        // 変数を作成
+        $args = [];
+        $args['price'] = $orderRow->total_price;
+        $args['description'] = config('const.site.STRIPE_DESCRIPTION_STORE') . $orderInfo;
+        $args['stripeId'] = $userRow->userDetail->stripe_id;
+        $args['statement_descriptor'] = "Merci!Maman";
+
+        // 決済を実行
+        $res = Stripe::chargeStripe($args);
+        $data = [];
+
+        if ($res === false || (is_array($res) && $res['result'] == false)){
+            return false; //決済NG
+        }else{
+            $data['charge_id'] = $res['chargeId']; //チャージID
+        }
+
+        //更新
+        if(!$this->orderService->updateItem(['id' => $orderId], $data)) return false;
+
+        // 返す
+        return true;
+    }
+}
