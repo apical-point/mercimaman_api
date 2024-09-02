@@ -177,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // マルチパスポート、パスポート
-        SMartins\PassportMultiauth\Providers\MultiauthServiceProvider::class,
+        // SMartins\PassportMultiauth\Providers\MultiauthServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
 
         // リポジトリ
