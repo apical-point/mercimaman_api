@@ -13,8 +13,8 @@
         "doctrine/dbal": "^3.3",
         "google/apiclient": "^2.0",
         "intervention/image": "^2.5",
-        "laravel/framework": "^9.0",
-        "laravel/passport": "^10.0",
+        "laravel/framework": "^10.0",
+        "laravel/passport": "^11.0",
         "lcobucci/jwt": "^4.0",
         "laravel/tinker": "^2.0",
         "rorecek/laravel-ulid": "^2.0",
@@ -24,8 +24,8 @@
     "require-dev": {
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.3",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.0",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "*"
     },
     "config": {
