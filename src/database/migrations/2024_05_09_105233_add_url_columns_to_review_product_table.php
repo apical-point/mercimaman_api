@@ -13,10 +13,10 @@ class AddUrlColumnsToReviewProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('review_product', function (Blueprint $table) {
-            $table->text('rakuten_url')->after("url")->nullable()->comment('楽天URL');
-            $table->text('myshop_url')->after("rakuten_url")->nullable()->comment('公式サイトURL');
-        });
+        // Schema::table('review_product', function (Blueprint $table) {
+        //     $table->text('rakuten_url')->after("url")->nullable()->comment('楽天URL');
+        //     $table->text('myshop_url')->after("rakuten_url")->nullable()->comment('公式サイトURL');
+        // });
     }
 
     /**

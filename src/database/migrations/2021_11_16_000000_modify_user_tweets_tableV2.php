@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 
 
-class ModifyUserTweetsTable extends Migration {
+class ModifyUserTweetsTableV2 extends Migration {
 
 	/**
 	 * Run the migrations.

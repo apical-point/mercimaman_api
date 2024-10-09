@@ -34,20 +34,14 @@ class SiteConfigController extends ApiBaseController
     // 一覧
     public function index(Request $request)
     {
-
         // *-*-*-*-*-*-*-*-*-*-*- データの定義 *-*-*-*-*-*-*-*-*-*-*-
         // 入力データの取得
         $inputData = $request->all();
-
-
         // *-*-*-*-*-*-*-*-*-*-*- db操作 *-*-*-*-*-*-*-*-*-*-*-
         try {
-
             return $this->sendResponse($this->siteConfigService->getList($inputData));
-
-         } catch (Exception $e) {
+        }catch (Exception $e) {
             return $this->sendExceptionErrorResponse($e);
-
         }
     }
 

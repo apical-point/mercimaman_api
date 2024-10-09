@@ -14,9 +14,9 @@ class UpdateUpdatedAtDefaultValue extends Migration
      */
     public function up()
     {
-        Schema::table('review_product', function (Blueprint $table) {
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->change();
-        });
+        // Schema::table('review_product', function (Blueprint $table) {
+        //     $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->change();
+        // });
     }
 
     /**

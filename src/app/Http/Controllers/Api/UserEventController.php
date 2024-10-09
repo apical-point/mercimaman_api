@@ -26,7 +26,7 @@ use App\Services\NgWordsService;
 // バリデートの配列
 use App\Libraries\ValidateCheckArray;
 
-class userEventController extends Bases\ApiBaseController
+class UserEventController extends Bases\ApiBaseController
 {
 
     // 画像の保存先--公開フォルダ

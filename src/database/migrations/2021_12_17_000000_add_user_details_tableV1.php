@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 
 
-class AddUserDetailsTable extends Migration {
+class AddUserDetailsTableV1 extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -18,7 +18,7 @@ class AddUserDetailsTable extends Migration {
 	    Schema::table('user_details', function (Blueprint $table) {
 
 
-	        $table->tinyInteger('mail_flg')->after("device_id")->default(1)->comment('1:メール送信:0:メール停止');
+	        $table->text('device_id')->after("bank_name")->nullable()->comment('端末ID/Push通知用');
 
 
 	    });

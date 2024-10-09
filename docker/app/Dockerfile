@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.3-apache
 
 # iniファイルの読込
 COPY ./docker/app/php.ini /usr/local/etc/php/
@@ -55,8 +55,8 @@ RUN pecl install imagick \
 RUN npm install npm@9.5.1 -g cross-env \
     && npm install -g vite
 
-# Xdebugインストール
-RUN pecl install xdebug-3.1.6 \
+# # Xdebugインストール
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 RUN chmod 777 /var/log/xdebug.log
 
